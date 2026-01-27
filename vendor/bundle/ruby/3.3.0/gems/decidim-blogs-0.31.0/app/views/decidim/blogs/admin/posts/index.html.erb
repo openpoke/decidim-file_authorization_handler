@@ -1,0 +1,33 @@
+<% add_decidim_page_title(t(".title")) %>
+<div class="card">
+  <div class="item_show__header">
+    <h1 class="item_show__header-title">
+      <%= t(".title") %>
+      <%= link_to t("actions.new", scope: "decidim.blogs"), new_post_path, class: "button button__sm button__secondary ml-auto" if allowed_to? :create, :blogpost %>
+      <%= render partial: "decidim/admin/components/resource_action" %>
+    </h1>
+  </div>
+  <div class="table-stacked">
+    <table class="table-list">
+      <%= render partial: "posts-thead" %>
+      <tbody>
+        <%= render partial: "decidim/blogs/admin/posts/post-tr",
+                   collection: posts,
+                   as: :post,
+                   locals: { view: :index } %>
+      </tbody>
+    </table>
+  </div>
+  <% if allowed_to? :manage_trash, :post, participatory_space: current_participatory_space %>
+    <div class="card mt-4">
+      <%= link_to manage_trash_posts_path, class: "flex items-center  text-secondary" do %>
+        <%= icon "delete-bin-2-line", class: "mr-2 fill-current text-secondary", role: "img" %>
+        <%= t("actions.view_deleted_posts", scope: "decidim.blogs") %>
+        <span class="ml-2">
+          <%= icon_with_tooltip("information-line", t("actions.deleted_posts_info", scope: "decidim.blogs")) %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= decidim_paginate posts %>

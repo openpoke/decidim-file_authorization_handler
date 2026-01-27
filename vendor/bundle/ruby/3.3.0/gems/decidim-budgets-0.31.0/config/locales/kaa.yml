@@ -1,0 +1,12 @@
+---
+kaa:
+  decidim:
+    budgets:
+      actions:
+        edit: Ózgeris kirgiziw
+      admin:
+        projects:
+          edit:
+            update: Jańalaw
+          index:
+            update: Jańalaw

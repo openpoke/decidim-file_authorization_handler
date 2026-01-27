@@ -1,0 +1,52 @@
+<% add_decidim_page_title(t(".title")) %>
+<div class="card">
+  <div class="item_show__header">
+    <h1 class="item_show__header-title">
+      <%= t(".title") %>
+
+      <div class="flex items-center gap-x-4">
+        <% if allowed_to? :export, :budget %>
+          <%= export_dropdown %>
+        <% end %>
+        <% if allowed_to? :remind, :order %>
+          <%= link_to t("actions.send_voting_reminders", scope: "decidim.budgets"), admin_reminders_path(current_component, name: "orders"), class: "button button__sm button__transparent-secondary" %>
+        <% end %>
+        <div id="js-other-actions-wrapper">
+          <%= link_to t("actions.new_budget", scope: "decidim.budgets"), new_budget_path, class: "button button__sm button__secondary" if allowed_to? :create, :budget %>
+        </div>
+        <%= render partial: "decidim/admin/components/resource_action" %>
+      </div>
+    </h1>
+  </div>
+  <div class="table-stacked">
+    <table class="table-list">
+      <%= render partial: "budgets-thead" %>
+      <tbody>
+        <%= render partial: "decidim/budgets/admin/budgets/budget-tr",
+                   collection: budgets,
+                   as: :budget,
+                   locals: { view: :index } %>
+      </tbody>
+    </table>
+  </div>
+  <% if allowed_to? :manage_trash, :budget, participatory_space: current_participatory_space %>
+    <div class="card-divider mt-4">
+      <%= link_to manage_trash_budgets_path, class: "flex items-center  text-secondary" do %>
+        <%= icon "delete-bin-2-line", class: "mr-2 fill-current text-secondary", role: "img" %>
+        <%= t("actions.view_deleted_budgets", scope: "decidim.budgets") %>
+        <span class="ml-2">
+          <%= icon_with_tooltip("information-line", t("actions.deleted_budgets_info", scope: "decidim.budgets")) %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="card-divider">
+    <strong><%= t ".finished_orders" %>:&nbsp;</strong><span><%= finished_orders.count %></span>
+    <span>&nbsp;|&nbsp;</span>
+    <strong><%= t ".pending_orders" %>:&nbsp;</strong><span><%= pending_orders.count %></span>
+    <span>&nbsp;|&nbsp;</span>
+    <strong><%= t ".users_with_finished_orders" %>:&nbsp;</strong><span><%= users_with_finished_orders.count %></span>
+    <span>&nbsp;|&nbsp;</span>
+    <strong><%= t ".users_with_pending_orders" %>:&nbsp;</strong><span><%= users_with_pending_orders.count %></span>
+  </div>
+</div>

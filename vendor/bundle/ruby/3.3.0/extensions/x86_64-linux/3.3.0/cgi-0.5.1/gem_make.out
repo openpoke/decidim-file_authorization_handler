@@ -1,0 +1,18 @@
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/cgi-0.5.1/ext/cgi/escape
+/home/elvia/.rbenv/versions/3.3.4/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/cgi-0.5.1/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-fzci3a sitelibdir\=./.gem.20260127-32267-fzci3a clean
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/cgi-0.5.1/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-fzci3a sitelibdir\=./.gem.20260127-32267-fzci3a
+compiling escape.c
+linking shared-object cgi/escape.so
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/cgi-0.5.1/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-fzci3a sitelibdir\=./.gem.20260127-32267-fzci3a install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260127-32267-fzci3a/cgi
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/cgi-0.5.1/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-fzci3a sitelibdir\=./.gem.20260127-32267-fzci3a clean

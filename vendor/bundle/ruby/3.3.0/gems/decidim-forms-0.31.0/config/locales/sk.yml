@@ -1,0 +1,49 @@
+---
+sk:
+  activemodel:
+    attributes:
+      question:
+        max_choices: Maximálny počet možností
+        question_type: Typ
+      questionnaire_question:
+        mandatory: Povinné
+  decidim:
+    forms:
+      admin:
+        models:
+          components:
+            description: Popis
+            tos: Podmienky použitia
+        questionnaires:
+          edit:
+            save: Uložiť
+          form:
+            add_question: Pridať otázku
+          matrix_row:
+            remove: Odstrániť
+            statement: Prehlásenie
+          question:
+            any: Akékoľvek
+            description: Popis
+            question: Otázka
+            remove: Odstrániť
+            statement: Prehlásenie
+          update:
+            invalid: Vyskytol sa problém s ukladaním formulára.
+      question_types:
+        multiple_option: Viacero možností
+        single_option: Jedna možnosť
+        sorting: Zoradenie
+      questionnaires:
+        question:
+          max_choices: 'Maximum možností: %{n}'
+        show:
+          questionnaire_closed:
+            title: Formulár je uzavretý.
+          questionnaire_for_private_users:
+            body: Formulár je otvorený len pre súkromných používateľov
+            title: Formulár je uzavretý
+          tos_agreement: Účasťou súhlasíte s našimi Podmienkami použitia
+      step_navigation:
+        show:
+          submit: Poslať

@@ -25,10 +25,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim", DECIDIM_VERSION
   s.add_dependency "decidim-admin", DECIDIM_VERSION
+  s.add_dependency "decidim-initiatives", DECIDIM_VERSION
 
   # rubocop: disable Gemspec/DevelopmentDependencies
   s.add_development_dependency "decidim-dev", DECIDIM_VERSION
-  s.add_development_dependency "decidim-initiatives", DECIDIM_VERSION
   # rubocop: enable Gemspec/DevelopmentDependencies
   s.metadata["rubygems_mfa_required"] = "true"
 end

@@ -1,0 +1,17 @@
+<div class="budget__list--header">
+  <div>
+    <% if voting_open? %>
+      <%= render partial: "addition_selector" %>
+    <% end %>
+  </div>
+
+  <div data-collection-sort-controls>
+    <%= render partial: "order" %>
+  </div>
+</div>
+
+<div class="budget-list">
+  <%= render partial: "projects_list", locals: { project: } %>
+</div>
+
+<%= decidim_paginate projects %>

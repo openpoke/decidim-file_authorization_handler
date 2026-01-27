@@ -1,0 +1,32 @@
+<div id="js-bulk-actions-wrapper" class="relative">
+  <button
+    id="js-bulk-actions-button"
+    class="button button__sm button__transparent-secondary"
+    type="button"
+    data-controller="dropdown"
+    data-target="js-bulk-actions-dropdown">
+    <%= t("decidim.budgets.admin.projects.index.actions") %>
+    <%= icon "arrow-down-s-line" %>
+    <%= icon "arrow-down-s-line" %>
+  </button>
+
+  <ul id="js-bulk-actions-dropdown" class="dropdown dropdown__bottom" aria-hidden="true">
+    <% if current_component_taxonomy_filters&.any? %>
+      <li class="dropdown__item">
+        <button type="button" class="dropdown__button" data-action="taxonomy-change-projects">
+          <%= t("decidim.budgets.admin.projects.index.change_taxonomies") %>
+        </button>
+      </li>
+    <% end %>
+    <li class="dropdown__item">
+      <button type="button" class="dropdown__button" data-action="change-selected-projects">
+        <%= t("decidim.budgets.admin.projects.index.change_selected") %>
+      </button>
+    </li>
+    <li class="dropdown__item">
+      <button type="button" class="dropdown__button" data-action="budget-change-projects">
+        <%= t("decidim.budgets.admin.projects.index.change_budget") %>
+      </button>
+    </li>
+  </ul>
+</div>

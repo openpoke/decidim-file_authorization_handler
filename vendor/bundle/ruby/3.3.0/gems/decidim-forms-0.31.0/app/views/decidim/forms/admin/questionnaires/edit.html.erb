@@ -1,0 +1,20 @@
+<% add_decidim_page_title(t("decidim.forms.admin.questionnaires.edit.title")) %>
+
+<% if templates_defined? && choose_template? %>
+  <%= render partial: "decidim/templates/admin/questionnaire_templates/choose", locals: { target: questionnaire, form_title: t("decidim.forms.admin.questionnaires.edit.title"), show_buttons: true } %>
+<% else %>
+
+<div class="item__edit item__edit-1col">
+  <div class="item__edit-form">
+    <%= decidim_form_for(@form, url: update_url, method: :put, html: { class: "form-defaults form edit_questionnaire" }) do |form| %>
+        <%= render partial: "decidim/forms/admin/questionnaires/form", object: form %>
+      <div class="item__edit-sticky">
+        <div class="item__edit-sticky-container">
+          <%= form.submit t(".save"), class: "button button__sm button__secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>

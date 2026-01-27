@@ -1,0 +1,61 @@
+---
+gl:
+  activemodel:
+    attributes:
+      question:
+        max_choices: Número máximo de opcións
+        question_type: Tipo
+      questionnaire_question:
+        mandatory: Obrigatorio
+  decidim:
+    forms:
+      admin:
+        models:
+          components:
+            description: Descrición
+            tos: Condicións de servicio
+        questionnaires:
+          edit:
+            save: Gardar
+          form:
+            add_question: Engadir pregunta
+          matrix_row:
+            remove: Quitar
+            statement: Declaración
+          question:
+            any: Calquera
+            description: Descrición
+            question: Pregunta
+            remove: Quitar
+            statement: Declaración
+          title_and_description:
+            collapse: Contraer
+            description: Descrición
+            expand: Expandir
+            remove: Eliminar
+            title: Título
+            title_and_description: Título e descrición
+          update:
+            invalid: Produciuse un erro ao gardar o cuestionario.
+      images:
+        processors:
+          resize_and_pad: A imaxe axustarase para se encadrar a %{dimensions}.
+          resize_to_fit: A imaxe axustarase para se adaptar a %{dimensions}.
+      question_types:
+        multiple_option: Múltipla opción
+        single_option: Opción única
+        sorting: Clasificación
+        title_and_description: Título e descrición
+      questionnaires:
+        question:
+          max_choices: 'Opcións máximas: %{n}'
+        show:
+          questionnaire_closed:
+            title: Cuestionario pechado
+          questionnaire_for_private_users:
+            body: O cuestionario só está dispoñible para usuarios privados
+            title: Cuestionario pechado
+          tos_agreement: Ao participar aceptas as Condicións de servizo
+      step_navigation:
+        show:
+          submit: Enviar

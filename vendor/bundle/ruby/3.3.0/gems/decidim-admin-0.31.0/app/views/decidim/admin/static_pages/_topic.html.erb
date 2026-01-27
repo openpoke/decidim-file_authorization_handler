@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="card-divider">
+    <% if allowed_to? :create, :static_page %>
+      <h2 class="card-title">
+        <% if topic %>
+          <%= translated_attribute(topic.title) %>
+        <% else %>
+          <%= t(".without_topic") %>
+        <% end %>
+      </h2>
+    <% end %>
+  </div>
+  <div class="table-stacked">
+    <% if pages.any? %>
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("models.static_page.fields.title", scope: "decidim.admin") %></th>
+            <th><%= t("models.static_page.fields.created_at", scope: "decidim.admin") %></th>
+            <th><%= t("last_notable_change", scope: "decidim.admin.static_pages.index") %></th>
+            <th><%= t("decidim.admin.actions.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pages.each do |page| %>
+            <tr>
+              <td data-label="<%= t("models.static_page.fields.title", scope: "decidim.admin") %>">
+                <%= link_to translated_attribute(page.title), [:edit, page] %>
+              </td>
+
+              <td data-label="<%= t("models.static_page.fields.created_at", scope: "decidim.admin") %>">
+                <%= l(page.created_at, format: :short) %>
+              </td>
+
+              <td data-label="<%= t("last_notable_change", scope: "decidim.admin.static_pages.index") %>">
+                <% if allowed_to?(:update_notable_changes, :static_page, static_page: page) %>
+                  <%= @tos_version_formatted %>
+                <% end %>
+              </td>
+
+              <td data-label="<%= t("decidim.admin.actions.actions") %>" class="table-list__actions">
+                 <button type="button" data-controller="dropdown" data-target="actions-static-page-<%= page.id %>" aria-label="<%= t("decidim.admin.actions.actions_label", resource: translated_attribute(page.title)) %>">
+                  <%= icon "more-fill", class: "text-secondary" %>
+                </button>
+
+                <div class="inline-block relative">
+                  <ul id="actions-static-page-<%= page.id %>" class="dropdown dropdown__action" aria-hidden="true">
+                    <% if allowed_to? :update, :static_page, static_page: page %>
+                      <li class="dropdown__item">
+                        <%= link_to [:edit, page], class: "dropdown__button" do %>
+                          <%= icon "pencil-line" %>
+                          <%= t("actions.edit", scope: "decidim.admin") %>
+                        <% end %>
+                      </li>
+
+                      <hr>
+                    <% end %>
+
+                    <li class="dropdown__item">
+                      <%= link_to decidim.page_path(page), target: "_blank", data: { "external-link": false }, class: "dropdown__button" do %>
+                        <%= icon "eye-line" %>
+                        <%= t("actions.view", scope: "decidim.admin.static_pages") %>
+                      <% end %>
+                    </li>
+
+                    <% if allowed_to? :destroy, :static_page, static_page: page %>
+                      <hr>
+
+                      <li class="dropdown__item">
+                        <%= link_to page, method: :delete, data: { confirm: t("actions.confirm_destroy", scope: "decidim.admin") }, class: "dropdown__button" do %>
+                          <%= icon "delete-bin-line" %>
+                          <%= t("actions.destroy", scope: "decidim.admin") %>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p><em><%= t(".empty") %></em></p>
+    <% end %>
+  </div>
+</div>

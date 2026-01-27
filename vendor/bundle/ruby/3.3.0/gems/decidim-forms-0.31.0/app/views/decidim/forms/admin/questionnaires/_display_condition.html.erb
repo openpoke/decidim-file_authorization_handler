@@ -1,0 +1,89 @@
+<% display_condition = form.object %>
+
+<div class="card questionnaire-question-display-condition m-4">
+  <div class="card-divider">
+    <h2 class="card-title">
+    <span><%= t(".display_condition") %></span>
+    <% if editable %>
+      <button class="button button__xs button__transparent-secondary small alert remove-display-condition button--title">
+        <%= icon("delete-bin-line") %>
+        <span class="hidden md:block"><%= t(".remove") %></span>
+      </button>
+    <% end %>
+    </h2>
+  </div>
+  <div class="card-section">
+    <div class="row column">
+      <small>
+        <%= t(".save_warning") %>
+      </small>
+    </div>
+  </div>
+  <div class="card-section">
+    <div class="row column questionnaire-question-display-condition-condition-question">
+      <%=
+        form.select(
+          :decidim_condition_question_id,
+          options_for_select(display_condition.questions_for_select(questionnaire, question.id), selected: display_condition.decidim_condition_question_id),
+          { prompt: t(".select_condition_question"), label: t(".condition_question") },
+          disabled: !editable,
+          data: { url: response_options_url(id: question.id) }
+        )
+      %>
+    </div>
+    <div class="row column">
+      <%=
+        form.select(
+          :condition_type,
+          options_from_collection_for_select(display_condition_types, :first, :last, display_condition.condition_type),
+          { prompt: t(".select_condition_type"), label: t(".condition_type") },
+          disabled: !editable
+        )
+      %>
+    </div>
+    <div class="row column questionnaire-question-display-condition-response-option">
+      <%=
+        form.select(
+          :decidim_response_option_id,
+          options_from_collection_for_select(display_condition.response_options, :id, :translated_body, selected: display_condition.decidim_response_option_id),
+          { prompt: t(".select_response_option"), label: t(".response_option") },
+          disabled: !editable,
+          data: { selected: display_condition.decidim_response_option_id }
+        )
+      %>
+    </div>
+    <div class="row column questionnaire-question-display-condition-value">
+      <%=
+        form.translated(
+          :text_field,
+          :condition_value,
+          tabs_id: tabs_id_for_question_display_condition(question, display_condition),
+          label: t(".condition_value"),
+          disabled: !editable
+        )
+      %>
+    </div>
+    <div class="row column">
+      <%=
+        form.check_box(
+          :mandatory,
+          label: t(".mandatory"),
+          disabled: !questionnaire.questions_editable?
+        )
+      %>
+    </div>
+    <div class="row column">
+      <% display_condition.errors.full_messages.each do |msg| %>
+        <small class="form-error is-visible"><%= msg %></small>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form.hidden_field :decidim_question_id, value: question.id, disabled: !editable %>
+
+  <% if display_condition.persisted? %>
+    <%= form.hidden_field :id, disabled: !editable %>
+  <% end %>
+
+  <%= form.hidden_field :deleted, disabled: !editable %>
+</div>

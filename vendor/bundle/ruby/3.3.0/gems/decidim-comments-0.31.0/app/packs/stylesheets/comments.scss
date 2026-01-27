@@ -1,0 +1,476 @@
+@use "stylesheets/decidim/tribute";
+
+.comments {
+  &__container {
+    @apply md:mt-12;
+  }
+
+  .add-comment {
+    @apply mt-12 md:bg-gray-5 p-0 md:px-4 md:pb-6 md:pt-1 rounded-lg w-full;
+
+    .new_comment {
+      @apply w-full;
+    }
+
+    .remaining-character-count {
+      @apply block text-left text-sm text-gray-2 mx-4 md:m-0;
+    }
+
+    .form__wrapper {
+      @apply pt-0;
+    }
+
+    a {
+      @apply text-secondary underline font-semibold;
+    }
+  }
+
+  .account-message {
+    a {
+      @apply text-secondary underline font-semibold;
+    }
+  }
+
+  &__header {
+    @apply flex justify-between md:flex-row md:items-center mb-4;
+
+    option {
+      &.selected {
+        @apply font-bold;
+      }
+    }
+  }
+
+  .author__avatar-container {
+    @apply w-8 h-8;
+  }
+
+  .comments-section {
+    &__header {
+      @apply flex items-center justify-center space-x-2 p-4 bg-secondary/5 rounded-b-md mb-4;
+
+      svg {
+        @apply w-6 h-6 mr-2 fill-secondary;
+      }
+    }
+
+    &__title {
+      @apply text-md font-semibold text-secondary;
+    }
+  }
+}
+
+.comments-two-columns {
+  .most-upvoted-label {
+    @apply px-2 mb-2;
+  }
+
+  input[type="radio"] {
+    &:not(.reset-defaults) {
+      @apply inline-block mr-0;
+    }
+  }
+}
+
+.comment {
+  @apply rounded-lg border-2 border-background-5 p-3 pl-6;
+
+  &.top-comment {
+    @apply border-gray-2;
+  }
+
+  &__header {
+    @apply flex items-center gap-x-2 mb-2 relative;
+
+    a[href^="/profile"] > span:first-child {
+      @apply z-10;
+    }
+
+    &--edited {
+      @apply text-sm font-semibold;
+    }
+
+    /* affects the left margin of the avatar in the comment replies */
+    & ~ [data-comment-footer] {
+      .comment__header {
+        @apply -ml-10;
+      }
+
+      [data-target*="dropdown-menu-add-comment"] {
+        @apply w-full flex items-center justify-between gap-2 px-0 pt-2 pb-0 first-of-type:[&>svg]:block last-of-type:[&>svg]:hidden;
+
+        > svg {
+          @apply w-6 h-6 flex-none text-secondary fill-current;
+        }
+      }
+    }
+  }
+
+  /* overwrite default dropdown styles */
+  [data-target*="dropdown"] {
+    @apply md:flex w-auto cursor-pointer text-sm text-secondary;
+  }
+
+  /* overwrite default dropdown styles */
+  [id*="dropdown-menu"][aria-hidden="true"] {
+    @apply md:hidden;
+  }
+
+  &__footer-grid {
+    @apply grid items-center mt-4;
+  }
+
+  &-reply {
+    @apply rounded-lg border-2 border-background-5 ml-3 relative;
+  }
+
+  &-reply:empty {
+    @apply hidden;
+  }
+
+  &-reply::after {
+    @apply bg-background-5 inline-block absolute top-8 h-4/5 w-px -z-10;
+
+    content: "";
+  }
+
+  &-reply &,
+  & &-reply {
+    @apply border-0 pr-0 mt-4;
+  }
+
+  &-thread {
+    @apply mb-8;
+
+    .button[aria-expanded="false"] {
+      svg:first-of-type {
+        @apply block;
+      }
+
+      svg:last-of-type {
+        @apply hidden;
+      }
+    }
+
+    .button[aria-expanded="true"] {
+      svg:first-of-type {
+        @apply hidden;
+      }
+
+      svg:last-of-type {
+        @apply block;
+      }
+    }
+  }
+
+  &__as {
+    @apply my-4 px-4 md:p-0;
+
+    &-author-container {
+      @apply flex justify-between items-center;
+    }
+
+    &-author-info {
+      @apply flex items-center gap-2;
+    }
+
+    &-author-name {
+      @apply text-gray-2 font-semibold;
+    }
+
+    &-author-selected {
+      @apply flex flex-col;
+
+      .author__avatar-container {
+        @apply -mt-3.5;
+      }
+    }
+  }
+
+  .add-comment {
+    @apply w-full;
+  }
+
+  .comment__votes {
+    @apply justify-self-end;
+
+    .comment__votes--up {
+      @apply mr-2;
+    }
+
+    > :first-child,
+    > :nth-child(2) {
+      svg:first-child {
+        @apply block;
+      }
+
+      svg:nth-child(2) {
+        @apply hidden;
+      }
+
+      .is-vote-selected {
+        svg:first-child {
+          @apply hidden;
+        }
+
+        svg:nth-child(2) {
+          @apply block;
+        }
+      }
+
+      .is-vote-notselected {
+        svg:first-child {
+          @apply block;
+        }
+
+        svg:nth-child(2) {
+          @apply hidden;
+        }
+      }
+    }
+
+    > :nth-child(2) {
+      svg:first-child {
+        @apply block;
+      }
+
+      svg:nth-child(2) {
+        @apply hidden;
+      }
+
+      .is-vote-selected {
+        svg:first-child {
+          @apply hidden;
+        }
+
+        svg:nth-child(2) {
+          @apply block;
+        }
+      }
+
+      .is-vote-notselected {
+        svg:first-child {
+          @apply block;
+        }
+
+        svg:nth-child(2) {
+          @apply hidden;
+        }
+      }
+    }
+
+    .comment__votes--count {
+      @apply text-gray-2 text-sm;
+    }
+
+    .button_to {
+      @apply inline-block;
+    }
+
+    /* override button default styles */
+    .button[disabled] {
+      @apply border-0 bg-transparent;
+    }
+  }
+
+  &-order-by {
+    @apply ml-auto flex place-items-center md:mt-0;
+
+    > form {
+      @apply flex;
+    }
+  }
+
+  &__actions {
+    @apply flex items-center justify-center gap-4;
+
+    .button[aria-expanded="false"] {
+      svg:first-of-type {
+        @apply block;
+      }
+
+      svg:last-of-type {
+        @apply hidden;
+      }
+
+      span:first-of-type {
+        @apply block;
+      }
+
+      span:last-of-type {
+        @apply hidden;
+      }
+    }
+
+    .button[aria-expanded="true"] {
+      svg:first-of-type {
+        @apply hidden;
+      }
+
+      svg:last-of-type {
+        @apply block;
+      }
+
+      span:first-of-type {
+        @apply hidden;
+      }
+
+      span:last-of-type {
+        @apply block;
+      }
+    }
+  }
+
+  &__reply-button {
+    @apply flex items-center justify-center;
+
+    .button[aria-expanded="false"] {
+      svg:first-of-type {
+        @apply block;
+      }
+
+      svg:last-of-type {
+        @apply hidden;
+      }
+
+      span:first-of-type {
+        @apply block;
+      }
+
+      span:last-of-type {
+        @apply hidden;
+      }
+    }
+
+    .button[aria-expanded="true"] {
+      svg:first-of-type {
+        @apply hidden;
+      }
+
+      svg:last-of-type {
+        @apply block;
+      }
+
+      span:first-of-type {
+        @apply hidden;
+      }
+
+      span:last-of-type {
+        @apply block;
+      }
+    }
+  }
+
+  &__votes-actions {
+    @apply flex justify-between;
+  }
+
+  &__content {
+    &--label {
+      @apply inline-block mb-2;
+    }
+  }
+
+  &__form {
+    &-label {
+      @apply font-semibold text-lg text-gray-2;
+    }
+
+    &-submit {
+      @apply flex flex-col md:flex-row md:justify-between items-stretch md:items-end gap-4 mt-4;
+    }
+
+    &-mobile-banner {
+      @apply flex relative md:hidden h-[72px] border-b border-gray justify-center items-center;
+
+      .close-button {
+        @apply absolute top-7 right-6 [&_svg]:w-4 [&_svg]:h-4;
+      }
+    }
+  }
+
+  &__opinion {
+    &-container {
+      @apply flex mt-2 w-full md:w-fit;
+
+      button {
+        @apply grow border border-gray first-of-type:rounded-l last-of-type:rounded-r inline-flex justify-center items-center gap-1 px-4 py-1.5 text-sm text-gray-2 -ml-px first:ml-0 transition-all;
+
+        svg {
+          @apply fill-current;
+        }
+
+        &:hover,
+        &.is-active {
+          @apply border-secondary text-secondary bg-background-4 font-bold;
+        }
+      }
+    }
+
+    &-label {
+      @apply text-sm text-gray-2;
+    }
+  }
+
+  &__deleted,
+  &__moderated {
+    @apply text-gray;
+  }
+
+  .comment__content > * {
+    @apply text-md;
+  }
+}
+
+.comments-label-dropdown {
+  @apply mr-2 mt-2;
+}
+
+[id*="dropdown-menu-add-comment"] {
+  @apply flex flex-col py-0 mx-0 border-t-0 border-gray-3 cursor-pointer;
+
+  &[aria-hidden="true"] {
+    @apply hidden;
+  }
+}
+
+[data-target*="dropdown-menu-add-comment"] {
+  @apply w-full flex items-center justify-between mb-4 gap-2 px-0 pt-2 pb-0 first-of-type:[&>svg]:block last-of-type:[&>svg]:hidden;
+
+  & > span {
+    @apply hidden font-semibold text-secondary;
+
+    &:only-of-type,
+    &.is-active {
+      @apply flex items-center gap-2 [&_svg]:fill-current;
+    }
+  }
+
+  > svg {
+    @apply w-6 h-6 flex-none text-secondary fill-current;
+  }
+
+  &[aria-expanded="false"] > svg:last-of-type,
+  &[aria-expanded="true"] > svg:first-of-type {
+    @apply hidden;
+  }
+
+  &[aria-expanded="true"] > svg:last-of-type,
+  &[aria-expanded="false"] > svg:first-of-type {
+    @apply block;
+  }
+}
+
+.publish-comment-button {
+  @apply ml-auto md:relative fixed inset-x-0 bottom-0 z-30 md:z-0 flex flex-row items-center md:items-end md:justify-end font-semibold justify-around bg-white md:bg-transparent gap-4 md:gap-0 p-4 md:p-0 shadow-inner md:shadow-none first:[&>*]:grow md:first:[&>*]:grow-0 h-14 md:h-fit first:[&>button]:py-3;
+}
+
+.fullscreen {
+  @apply fixed md:relative inset-0 w-screen md:w-full h-screen bg-white z-50 p-0 overflow-auto md:overflow-hidden rounded-none;
+}
+
+.comments {
+  .fullscreen.add-comment {
+    @apply mt-0;
+  }
+}

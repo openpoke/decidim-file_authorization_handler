@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - uses: ruby/setup-ruby@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          rubygems: latest
+          bundler-cache: true
+      - uses: rubygems/release-gem@v1
+        if: ${{ steps.release.outputs.release_created }}

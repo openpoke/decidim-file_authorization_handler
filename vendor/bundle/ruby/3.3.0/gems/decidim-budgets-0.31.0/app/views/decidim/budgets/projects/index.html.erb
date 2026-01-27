@@ -1,0 +1,81 @@
+<% if @focus_mode %>
+  <% content_for :focus_mode, true %>
+  <% content_for :focus_mode_return_path, budgets_path %>
+  <% content_for :focus_mode_return_string, t("decidim.budgets.projects.back_to_budgets") %>
+<% end %>
+
+<% add_decidim_meta_tags(
+  description: translated_attribute(budget.description),
+  title: t("decidim.components.pagination.page_title",
+           component_name: t("decidim.budgets.projects.projects_for", name: translated_attribute(budget.title)),
+           current_page: projects.current_page,
+           total_pages: projects.total_pages ),
+  url: budget_url(budget),
+  resource: budget) %>
+
+<%= append_javascript_pack_tag "decidim_budgets" %>
+<%= append_stylesheet_pack_tag "decidim_budgets" %>
+
+<% if @focus_mode %>
+  <%= render partial: "budget_summary", locals: { responsive: true, focus_mode_origin: "index" } %>
+<% end %>
+
+<%= cell("decidim/budgets/budget_information_modal", budget) %>
+
+<% content_for :aside do %>
+  <h1 class="h3 decorator"><%= t("decidim.budgets.projects.projects_for", name: translated_attribute(budget.title)) %></h1>
+
+  <%= render layout: "decidim/shared/filters", locals: { filter_sections: , search_variable: :search_text_cont, skip_to_id: "projects" } do %>
+    <%= hidden_field_tag :order, order, id: nil, class: "order_filter" %>
+  <% end %>
+<% end %>
+
+<%= render layout: "layouts/decidim/shared/layout_two_col" do %>
+  <% if projects.any? %>
+    <%= render partial: "exit_modal" %>
+    <%= render partial: "budget_excess" %>
+    <%= render partial: "budget_confirm" %>
+
+    <% if @focus_mode && !voting_finished? %>
+      <div class="budget-summary__container">
+        <%= render partial: "budget_summary", locals: { responsive: false, focus_mode_origin: "index" } %>
+      </div>
+    <% end %>
+
+    <% if Decidim::Map.available?(:geocoding, :dynamic) && component_settings.geocoding_enabled? %>
+      <div class="budget-list__map">
+        <%= cell "decidim/map", all_geocoded_projects, metadata_card: "decidim/budgets/project_metadata" %>
+      </div>
+    <% end %>
+
+    <%= cell("decidim/budgets/limit_announcement", budget) %>
+
+    <% unless voting_finished? %>
+      <section class="layout-main__section">
+        <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-semibold">
+              <%= t("select_projects", scope: "decidim.budgets.projects") %>
+            </span>
+
+            <% if cell("decidim/budgets/budget_information_modal", budget).more_information.present? %>
+              <button type="button" data-dialog-open="budget-modal-info" aria-haspopup="dialog" tabindex="0" class="button button__icon button__text-secondary lg:hidden">
+                <%= icon "question-line" %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <section id="projects" class="layout-main__section layout-main__heading budget__projects__container">
+      <%= render partial: "projects" %>
+    </section>
+  <% else %>
+    <%= cell("decidim/announcement", t("empty", scope: "decidim.budgets.projects")) %>
+  <% end %>
+
+  <% if current_user&.ephemeral? %>
+    <div class="h-40 bg-transparent"></div>
+  <% end %>
+<% end %>

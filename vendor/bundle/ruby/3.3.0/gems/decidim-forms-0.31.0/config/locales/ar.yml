@@ -1,0 +1,54 @@
+---
+ar:
+  activemodel:
+    attributes:
+      question:
+        max_choices: أقصى عدد من الخيارات
+        question_type: نوع
+      questionnaire_question:
+        mandatory: إلزامي
+  decidim:
+    forms:
+      admin:
+        models:
+          components:
+            description: وصف
+            tos: شروط الخدمة
+        questionnaires:
+          display_condition:
+            condition_question: سؤال
+            remove: حذف
+          edit:
+            save: حفظ
+          form:
+            add_question: أضف سؤال
+          matrix_row:
+            remove: إزالة
+            statement: بيان
+          question:
+            any: أي
+            description: وصف
+            question: سؤال
+            remove: إزالة
+            statement: بيان
+          title_and_description:
+            description: الوصف
+          update:
+            invalid: كانت هناك مشكلة في حفظ النموذج.
+      question_types:
+        multiple_option: خيار متعدد
+        single_option: خيار واحد
+        sorting: فرز
+      questionnaires:
+        question:
+          max_choices: 'خيارات ماكس: %{n}'
+        show:
+          questionnaire_closed:
+            title: شكل مغلق
+          questionnaire_for_private_users:
+            body: النموذج متاح فقط للمستخدمين من القطاع الخاص
+            title: شكل مغلق
+          tos_agreement: من خلال المشاركة ، فإنك تقبل شروط الخدمة
+      step_navigation:
+        show:
+          submit: خضع

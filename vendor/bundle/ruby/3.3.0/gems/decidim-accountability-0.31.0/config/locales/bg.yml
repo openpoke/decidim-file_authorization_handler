@@ -1,0 +1,191 @@
+---
+bg:
+  activemodel:
+    attributes:
+      result:
+        decidim_accountability_status_id: Статус
+        decidim_category_id: Категория
+        decidim_scope_id: Сфера
+        description: Описание
+        end_date: Крайна дата
+        progress: Напредък
+        start_date: Начална дата
+        title: Заглавие
+        updated_at: Обновен на
+      status:
+        description: Описание
+        key: Ключ
+        name: Име
+        progress: Напредък
+    models:
+      decidim/accountability/proposal_linked_event: Предложение, включено в резултата
+      decidim/accountability/result_progress_updated_event: Напредъкът на резултатите е актуализиран
+  activerecord:
+    models:
+      decidim/accountability/result:
+        one: Резултат
+        other: Резултати
+  decidim:
+    accountability:
+      actions:
+        confirm_destroy: Сигурни ли сте, че искате да изтриете това %{name}?
+        destroy: Изтрий
+        edit: Редактирай
+        import_csv: Импортирай резултати от CSV файл
+        new_result: Нов резултат
+        new_status: Нов статус
+        preview: Преглед
+        title: Действия
+      admin:
+        exports:
+          result_comments: Коментари
+          results: Резултати
+        import_results:
+          new:
+            download_export: Свалете експорта в CSV формат
+            import: Внасяне
+            title: Импортирай резултати от CSV файл
+        imports:
+          create:
+            invalid: Възникна проблем при импортирането на резултатите.
+            success: Файлът започна да се импортира. В следващите минути ще получите имейл с резултата от импортирането.
+        models:
+          result:
+            name: Резултат
+          status:
+            name: Статус
+        results:
+          create:
+            invalid: Възникна проблем при създаването на този резултат.
+            success: Резултатът беше създаден успешно.
+          edit:
+            title: Редактирай резултат
+            update: Обнови резултат
+          index:
+            title: Резултати
+          new:
+            create: Създай резултат
+            title: Нови резултати
+          update:
+            invalid: Възникна проблем при актуализирането на този резултат.
+            success: Резултатът беше актуализиран успешно.
+        shared:
+          subnav:
+            statuses: Статуси
+        statuses:
+          create:
+            invalid: Възникна проблем при създаването на този статус.
+            success: Статуса е създаден успешно.
+          destroy:
+            success: Статуса е изтрит успешно.
+          edit:
+            title: Редактирай на статуса
+            update: Обнови на статус
+          index:
+            title: Статуси
+          new:
+            create: Създай статус
+            title: Нов статус
+          update:
+            invalid: Възникна проблем при обновяването на този статус.
+            success: Статуса беше обновен успешно.
+      admin_log:
+        result:
+          create: "%{user_name} създаде резултата %{resource_name} в %{space_name}"
+          delete: "%{user_name} изтри резултата %{resource_name} в %{space_name}"
+          update: "%{user_name} обнови резултата %{resource_name} в %{space_name}"
+        status:
+          create: "Статусът е създаден"
+          delete: "Статусът е изтрит"
+          update: "Статусът е обновен"
+        value_types:
+          parent_presenter:
+            not_found: 'Родителя липсва в базата данни (ID: %{id})'
+      content_blocks:
+        highlighted_results:
+          results: Резултати
+      import_mailer:
+        import:
+          errors: Грешки
+          errors_present: Възникна проблем при импортирането на резултатите.
+          row_number: Редове
+          subject: Успешно внасяне на резултати
+          success: Успешно внасяне на резултати. Може да ги прегледате в администраторския интерфейс.
+      import_projects_mailer:
+        import:
+          added_projects:
+            one: Един резултат беше импортиран от проекти.
+            other: "%{count} резултата бяха импортирани от проекти."
+          subject: Успешен импорт на проекти
+          success: Успешно импортирани проекти в резултати към компонента %{component_name}. Можете да прегледате резултатите в административния интерфейс.
+      last_activity:
+        new_result: 'Нов резултат:'
+      models:
+        result:
+          fields:
+            created_at: Създаден
+            end_date: Крайна дата
+            id: ID
+            progress: Напредък
+            start_date: Начална дата
+            status: Статус
+            title: Заглавие
+        status:
+          fields:
+            description: Описание
+            key: Ключ
+            name: Име
+            progress: Напредък
+      results:
+        count:
+          results_count:
+            one: 1 резултат
+            other: "%{count} резултата"
+        home_header:
+          global_status: Общо състояние на изпълнение
+        no_results: Няма проекти
+        search:
+          search: Търсене на действия
+        show:
+          stats:
+            back_to_resource: Върни се към резултата
+    admin:
+      filters:
+        results:
+          status_id_eq:
+            label: Статус
+    components:
+      accountability:
+        actions:
+          comment: Коментар
+        name: Отговорност
+        settings:
+          global:
+            comments_enabled: Коментарите са разрешени
+            comments_max_length: Максимална дължина на коментарите (Оставете 0 за стойност по подразбиране)
+            display_progress_enabled: Показвай развитието
+            intro: Въведение
+          step:
+            comments_blocked: Коментарите са блокирани
+    events:
+      accountability:
+        proposal_linked:
+          email_intro: 'Предложението "%{proposal_title}" е включено в резултата. Можете да го видите на страницата:'
+          email_outro: Получавате това известие, защото следвате "%{proposal_title}". Може да прекратите известията чрез предната връзка.
+          email_subject: Обновление в %{proposal_title}
+          notification_title: Предложението <a href="%{proposal_path}">%{proposal_title}</a> е включено в резултата <a href="%{resource_path}">%{resource_title}</a>.
+        result_progress_updated:
+          email_intro: 'Резултата "%{resource_title}", който включва предложението "%{proposal_title}", е завършен на %{progress}%. Можете да го видите на тази страница:'
+          email_outro: Получавате това известие, защото следвате "%{proposal_title}" и това предложение е включено в резултата %{resource_title}. Може да прекратите известията чрез предната връзка.
+          email_subject: Напредък в обновлението на %{resource_title}
+          notification_title: Резултатът <a href="%{resource_path}">%{resource_title}</a>, който включва предложението <a href="%{proposal_path}">%{proposal_title}</a>, е завършен %{progress}%.
+    participatory_spaces:
+      highlighted_results:
+        see_all: Виж всички резултати (%{count})
+    resource_links:
+      included_projects:
+        result_project: Проекти, включени в резултата
+      included_proposals:
+        result_proposal: Предложения, включени в резултата
+    statistics:
+      results_count: Резултати

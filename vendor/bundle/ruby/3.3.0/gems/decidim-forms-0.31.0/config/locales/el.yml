@@ -1,0 +1,110 @@
+---
+el:
+  activemodel:
+    attributes:
+      question:
+        max_choices: Μέγιστος αριθμός επιλογών
+        question_type: Τύπος
+      questionnaire_question:
+        mandatory: Υποχρεωτικό
+        max_characters: Όριο χαρακτήρων (αφήστε στο 0 αν δεν υπάρχει όριο)
+  decidim:
+    forms:
+      admin:
+        models:
+          components:
+            description: Περιγραφή
+            tos: Όροι χρήσης υπηρεσίας
+        questionnaires:
+          display_condition:
+            condition_question: Ερώτηση
+            condition_type: Συνθήκη
+            condition_types:
+              equal: Ίσο
+              match: Περιλαμβάνει κείμενο
+              not_equal: Όχι ίσο
+            condition_value: Περιλαμβανόμενο κείμενο
+            display_condition: Συνθήκη εμφάνισης
+            mandatory: Αυτή η συνθήκη πρέπει να ικανοποιείται πάντα ανεξάρτητα από την κατάσταση άλλων συνθηκών
+            remove: Αφαίρεση
+            save_warning: Θυμηθείτε να αποθηκεύσετε τη φόρμα πριν διαμορφώσετε τις συνθήκες εμφάνισης
+            select_condition_question: Επιλέξτε μια ερώτηση
+            select_condition_type: Επιλέξτε έναν τύπο συνθήκης
+          edit:
+            save: Αποθήκευση
+            title: Επεξεργασία ερωτηματολογίου
+          form:
+            add_question: Προσθήκη ερώτησης
+            collapse: Σύμπτυξη όλων των ερωτήσεων
+            expand: Ανάπτυξη όλων των ερωτήσεων
+            preview: Προεπισκόπηση
+            title: Επεξεργασία φόρμας για %{questionnaire_for}
+          matrix_row:
+            matrix_row: Γραμμή
+            remove: Κατάργηση
+            statement: Δήλωση
+          question:
+            add_display_condition: Προσθήκη συνθήκης εμφάνισης
+            add_display_condition_info: Αποθηκεύστε τη φόρμα για να ρυθμίσετε τις συνθήκες εμφάνισης
+            add_matrix_row: Προσθήκη γραμμής
+            any: Οποιαδήποτε
+            collapse: Σύμπτυξη
+            description: Περιγραφή
+            expand: Ανάπτυξη
+            question: Ερώτηση
+            remove: Κατάργηση
+            statement: Δήλωση
+          responses:
+            actions:
+              show: Εμφάνιση απαντήσεων
+          separator:
+            remove: Κατάργηση
+            separator: Διαχωριστικό
+          title_and_description:
+            collapse: Σύμπτυξη
+            description: Περιγραφή
+            expand: Ανάπτυξη
+            remove: Αφαίρεση
+            title: Τίτλος
+            title_and_description: Τίτλος και περιγραφή
+          update:
+            invalid: Υπήρξε ένα πρόβλημα κατά την αποθήκευση της φόρμας.
+            success: Η φόρμα αποθηκεύτηκε επιτυχώς.
+      admin_log:
+        questionnaire:
+          update: "Ο/Η %{user_name} ενημέρωσε το %{resource_name} ερωτηματολόγιο"
+      images:
+        dimensions: "Π %{width} x Υ %{height} px"
+        processors:
+          resize_and_pad: Αυτή η εικόνα θα αλλάξει μέγεθος σε %{dimensions}.
+          resize_to_fit: Αυτή η εικόνα θα αλλάξει μέγεθος για να χωρέσει σε %{dimensions}.
+      question_types:
+        files: Αρχεία
+        matrix_multiple: Πίνακας (πολλαπλή επιλογή)
+        matrix_single: Πίνακας (μία επιλογή)
+        multiple_option: Πολλαπλή επιλογή
+        single_option: Μία επιλογή
+        sorting: Ταξινόμηση
+        title_and_description: Τίτλος και περιγραφή
+      questionnaires:
+        question:
+          max_choices: 'Μέγιστες επιλογές: %{n}'
+        show:
+          current_step: Βήμα %{step}
+          of_total_steps: από %{total_steps}
+          questionnaire_closed:
+            title: Η φόρμα έκλεισε
+          questionnaire_for_private_users:
+            body: Η φόρμα είναι διαθέσιμη μόνο για ιδιωτικούς χρήστες
+            title: Η φόρμα έκλεισε
+          questionnaire_js_disabled:
+            body: Ορισμένες από τις δυνατότητες αυτής της φόρμας θα απενεργοποιηθούν. Για να βελτιώσετε την εμπειρία σας, ενεργοποιήστε την JavaScript στο πρόγραμμα περιήγησης.
+            title: Η JavaScript είναι απενεργοποιημένη
+          questionnaire_not_published:
+            body: Αυτή η φόρμα δεν έχει δημοσιευτεί ακόμη.
+          tos_agreement: Με τη συμμετοχή σας, αποδέχεστε τους Όρους παροχής υπηρεσίας
+      step_navigation:
+        show:
+          back: Πίσω
+          continue: Συνέχεια
+          submit: Υποβολή

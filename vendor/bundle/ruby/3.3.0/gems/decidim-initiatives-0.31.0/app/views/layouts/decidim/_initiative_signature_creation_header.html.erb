@@ -1,0 +1,24 @@
+<div class="flex justify-center">
+  <h1 class="title-decorator my-12">
+    <% if content_for :title %>
+      <%= yield :title %>
+    <% else %>
+      <%= t("verify_your_identity", scope: "layouts.decidim.initiative_signature_creation_header") %>
+    <% end %>
+  </h1>
+</div>
+
+<% if content_for :help %>
+  <%= yield :help %>
+<% else %>
+  <div class="form__wrapper">
+    <p>
+      <%= t(
+            "help_information_html",
+            initiative_title: translated_attribute(current_initiative.title),
+            initiative_author: decidim_sanitize(present(current_initiative.author).name),
+            scope: "layouts.decidim.initiative_signature_creation_header"
+          ) %>
+    </p>
+  </div>
+<% end %>

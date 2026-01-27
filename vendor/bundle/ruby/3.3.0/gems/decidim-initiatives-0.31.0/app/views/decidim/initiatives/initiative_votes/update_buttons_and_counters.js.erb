@@ -1,0 +1,10 @@
+(function () {
+  'use strict';
+
+  var $initiativeVotesCount = $('#initiative-<%= current_initiative.id %>-progress-bar');
+
+  $initiativeVotesCount.html('<%= j(render partial: "decidim/initiatives/initiatives/progress_bar", locals: { initiative: current_initiative }) %>');
+
+  var $initiativeVoteButton = $('#initiative-<%= current_initiative.id %>-vote-cabin');
+  $initiativeVoteButton.html('<%= j(render partial: "decidim/initiatives/initiatives/vote_cabin", locals: { initiative: current_initiative }) %>');
+}());

@@ -1,0 +1,14 @@
+---
+val:
+  decidim:
+    admin:
+      filters:
+        moderated_users:
+          reports_reason_eq:
+            label: Motiu
+            values:
+              does_not_belong: No pertany
+              offensive: Ofensiu
+              spam: Spam
+        search_placeholder:
+          report_count_eq: Número de denúncies

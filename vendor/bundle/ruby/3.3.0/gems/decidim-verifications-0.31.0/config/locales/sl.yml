@@ -1,0 +1,6 @@
+---
+sl:
+  activemodel:
+    attributes:
+      config:
+        offline: Nepovezan

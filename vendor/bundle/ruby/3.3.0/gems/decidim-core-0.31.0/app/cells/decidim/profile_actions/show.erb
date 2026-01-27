@@ -1,0 +1,11 @@
+<div class="profile__actions-main">
+  <%= profile_actions %>
+</div>
+
+<div class="profile__actions-secondary">
+  <%= cell("decidim/follow_button", profile_holder) %>
+
+  <% if user_flaggable? && model.try(:id) != current_user.try(:id) %>
+    <%= cell("decidim/report_user_button", profile_holder) %>
+  <% end %>
+</div>

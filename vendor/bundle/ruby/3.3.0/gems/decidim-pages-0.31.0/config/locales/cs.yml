@@ -1,0 +1,46 @@
+---
+cs:
+  activerecord:
+    models:
+      decidim/pages/page:
+        one: Stránka
+        few: Stránky
+        many: Stránky
+        other: Stránky
+  decidim:
+    admin_log:
+      page:
+        update: "%{user_name} aktualizovala %{resource_name} stránku v %{space_name}"
+    components:
+      pages:
+        name: Stránka
+        settings:
+          global:
+            announcement: Oznámení
+          step:
+            announcement: Oznámení
+    open_data:
+      help:
+        pages:
+          body: Tělo stránky
+          component: Komponenta, ke které stránka patří,
+          created_at: Datum, kdy byla stránka vytvořena
+          id: Jedinečný identifikátor této stránky
+          participatory_space: Do kterého prostoru (např. účastnický proces nebo Shromáždění) patří tato schůzka
+          title: Název stránky
+          updated_at: Poslední datum aktualizace této stránky
+          url: URL pro tuto stránku
+    pages:
+      admin:
+        models:
+          components:
+            body: Tělo
+        pages:
+          edit:
+            save: Aktualizace
+            title: Upravit stránku
+          update:
+            invalid: Při ukládání stránky došlo k chybám.
+            success: Stránka byla úspěšně uložena.
+      show:
+        empty: Na této stránce zatím není žádný obsah.

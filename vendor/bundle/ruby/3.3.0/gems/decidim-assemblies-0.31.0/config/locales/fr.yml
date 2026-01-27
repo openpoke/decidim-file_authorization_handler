@@ -1,0 +1,412 @@
+---
+fr:
+  activemodel:
+    attributes:
+      assembly:
+        announcement: Message d'annonce
+        area_id: Périmètre d'assemblée
+        assembly_type: Type d'assemblée
+        assembly_type_other: Autre type d'assemblée
+        banner_image: Image d'en-tête
+        closing_date: Date de clôture
+        closing_date_reason: Raison de la date de clôture
+        composition: Composition
+        created_by: Créé par
+        created_by_other: Si "autres", précisez
+        creation_date: Date de création
+        decidim_area_id: Périmètre d'assemblée
+        decidim_scope_id: Périmètre d'application
+        description: Description
+        developer_group: Organisateur
+        document: Document
+        domain: Domaine
+        duplicate_categories: Dupliquer les catégories
+        duplicate_components: Dupliquer les composants
+        duplicate_features: Dupliquer les fonctionnalités
+        duration: Durée
+        facebook: Facebook
+        github: GitHub
+        hero_image: Image de la page d'accueil
+        import_attachments: Importer les pièces jointes
+        import_categories: Importer les catégories
+        import_components: Importer les fonctionnalités
+        included_at: Intégrée à cette plateforme le
+        instagram: Instagram
+        internal_organisation: Organisation interne
+        is_transparent: Visible par les non-membres
+        local_area: Espace d'organisation
+        meta_scope: Échelle
+        parent_id: Assemblée parente
+        participatory_processes_ids: Concertations associées
+        participatory_scope: Objectifs
+        participatory_structure: Modalités de décision
+        private_space: Espace privé
+        promoted: Mise en avant
+        published_at: Publiée à
+        purpose_of_action: But de l'action
+        short_description: Résumé
+        slug: Identifiant
+        special_features: Particularités
+        subtitle: Sous-titre
+        target: Participants
+        title: Titre
+        twitter: X
+        weight: Rang d'affichage
+        youtube: Youtube
+      assembly_member:
+        birthday: Date de naissance
+        birthplace: Lieu de naissance
+        ceased_date: Date de radiation
+        designation_date: Date de désignation
+        full_name: Nom et prénom
+        gender: Genre
+        non_user_avatar: Avatar
+        position: Statut
+        user_id: Utilisateur ou groupe
+        weight: Rang d'affichage
+      assembly_user_role:
+        email: E-mail
+        name: "Nom\n"
+        role: Fonction
+    errors:
+      models:
+        assembly:
+          attributes:
+            document:
+              allowed_file_content_types: 'Type de document invalide. Seuls les fichiers avec les extensions suivantes sont autorisés : %{types}.'
+  activerecord:
+    models:
+      decidim/assembly:
+        one: Assemblée
+        other: Assemblées
+      decidim/assembly_member:
+        one: Membre de l'assemblée
+        other: Membres de l'assemblée
+      decidim/assembly_user_role:
+        one: Fonction du membre dans l'assemblée
+        other: Fonctions du membre dans l'assemblée
+  decidim:
+    admin:
+      actions:
+        confirm_delete_assembly: Êtes-vous sûr(e) de vouloir supprimer cette assemblée ? Si vous changez d'avis, vous pourrez la restaurer plus tard.
+        import_assembly: Importer
+        new_assembly: Nouvelle assemblée
+        new_assembly_user_role: Nouvel administrateur de l'assemblée
+        view_deleted_assemblies: Voir les assemblées supprimées
+      assemblies:
+        create:
+          error: Une erreur s'est produite lors de la création d'une nouvelle assemblée.
+          success: Assemblée créée avec succès. Vous pouvez maintenant ajouter des composants et la configurer.
+        edit:
+          update: Mettre à jour
+        index:
+          private: Privée
+          public: Publique
+          published: Publiée
+          unpublished: Non publié
+        manage_trash:
+          title: Assemblées supprimées
+        new:
+          create: Créer
+          title: Nouvelle assemblée
+        update:
+          error: Une erreur s'est produite lors de la mise à jour de cette assemblée.
+          success: Assemblée mise à jour avec succès.
+      assemblies_duplicates:
+        create:
+          error: Une erreur s'est produite lors de la duplication de cette assemblée.
+          success: L'assemblée a été dupliquée avec succès.
+      assembly_duplicates:
+        new:
+          duplicate: Dupliquer
+          select: Sélectionnez les données que vous souhaitez dupliquer
+          title: Dupliquer l'assemblée
+      assembly_imports:
+        create:
+          error: Un problème est survenu lors de l'import de cette assemblée.
+          success: L'assemblée a été importée avec succès.
+        new:
+          import: Importer
+          select: Sélectionnez les données que vous souhaitez importer
+          title: Importer l'assemblée
+      assembly_publications:
+        create:
+          error: Une erreur s'est produite lors de la publication de cette assemblée.
+          success: Assemblée publiée avec succès.
+        destroy:
+          error: Une erreur s'est produite lors de la dépublication de cette assemblée.
+          success: Assemblée dépubliée avec succès.
+      assembly_user_roles:
+        create:
+          error: Une erreur s'est produite lors de l'ajout d'un utilisateur pour cette assemblée.
+          success: Utilisateur ajouté avec succès à cette assemblée.
+        destroy:
+          success: Utilisateur supprimé avec succès de cette assemblée.
+        edit:
+          title: Mettre à jour l'administrateur de l'assemblée
+          update: Mettre à jour
+        index:
+          assembly_admins_title: Administrateurs de l'assemblée
+        new:
+          create: Créer
+          title: Nouvel administrateur de l'assemblée
+        update:
+          error: Une erreur s'est produite lors de la mise à jour d'un utilisateur pour cette assemblée.
+          success: Utilisateur mis à jour avec succès pour cette assemblée.
+      filters:
+        ceased_date_not_null:
+          label: Terminé
+          values:
+            'false': En cours
+            'true': Terminé
+        search_placeholder:
+          full_name_or_user_name_or_user_nickname_cont: Rechercher par nom ou par pseudonyme
+      menu:
+        assemblies: Assemblées
+        assemblies_submenu:
+          assembly_admins: Administrateurs de l'assemblée
+          attachment_collections: Dossiers
+          attachment_files: Fichiers
+          attachments: Documents liés
+          components: Fonctionnalités
+          info: À propos de cette assemblée
+          moderations: Modérations
+          private_users: Membres
+          see_assembly: Voir l'assemblée
+      models:
+        assembly:
+          fields:
+            actions: Actions
+            created_at: Créée le
+            private: Privée
+            promoted: Mise en avant
+            published: Publiée
+            title: Titre
+          name: Assemblée
+        assembly_member:
+          name: Membre
+          positions:
+            other: Autre
+            president: Président
+            secretary: Secrétaire
+            vice_president: Vice président
+        assembly_user_role:
+          fields:
+            actions: Actions
+            email: Email
+            name: Nom
+            role: Fonction
+          name: Utilisateur de l'assemblée
+          roles:
+            admin: Administrateur
+            collaborator: Collaborateur
+            evaluator: Évaluateur
+            moderator: Modérateur
+      taxonomy_filters:
+        space_filter_for:
+          assemblies: Toutes les assemblées
+      titles:
+        assemblies: Assemblées
+        assemblies_deleted: Assemblées supprimées
+        assemblies_types: Types d'assemblée
+      tooltips:
+        deleted_assemblies_info: Une assemblée ne peut être supprimée que si son statut est "non publiée".
+    admin_log:
+      assembly:
+        create: "%{user_name} a créé l'assemblée %{resource_name}"
+        duplicate: "%{user_name} a dupliqué l'assemblée %{resource_name}"
+        export: "%{user_name} a exporté l'assemblée %{resource_name}"
+        import: "%{user_name} a importé l'assemblée %{resource_name}"
+        publish: "%{user_name} a publié l'assemblée %{resource_name}"
+        restore: "%{user_name} a restauré l'assemblée %{resource_name}"
+        soft_delete: "%{user_name} a déplacé dans la corbeille l'assemblée %{resource_name}"
+        unpublish: "%{user_name} a dépublié l'assemblée %{resource_name}"
+        update: "%{user_name} a mis à jour l'assemblée %{resource_name}"
+      assembly_member:
+        create: "%{user_name} a créé le membre %{resource_name} membre dans l'assemblée %{space_name}"
+        delete: "%{user_name} enlevé le membre %{resource_name} de l'assemblée %{space_name}"
+        update: "%{user_name} a mis à jour le membre %{resource_name} de l'assemblée %{space_name}"
+      assembly_setting:
+        update: "%{user_name} a mis à jour les paramètres des assemblées"
+      assembly_type:
+        create: "%{user_name} a créé le type d'assemblée %{resource_name}"
+        delete: "%{user_name} a supprimé le type d'assemblée %{resource_name}"
+        publish: "%{user_name} a publié le type d'assemblée %{resource_name}"
+        unpublish: "%{user_name} a dépublié le type d'assemblée %{resource_name}"
+        update: "%{user_name} a mis à jour le type d'assemblée %{resource_name}"
+      assembly_user_role:
+        create: "%{user_name} a invité %{resource_name} à l'assemblée %{space_name}"
+        delete: "%{user_name} a supprimé l'utilisateur %{resource_name} de l'assemblée%{space_name}"
+        update: "%{user_name} a changé le rôle de %{resource_name} dans l'assemblée %{space_name}"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            announcement_help: Le texte que vous saisissez ici sera affiché aux utilisateurs juste en dessous des informations de l'assemblée.
+            define_taxonomy_filters: Veuillez définir des filtres pour cet espace participatif avant d'utiliser ce paramètre.
+            duration: Durée
+            duration_help: Si la durée de cette assemblée est limitée, sélectionnez la date de fin. Sinon sa durée ne sera pas limitée.
+            images: Images
+            included_at_help: Sélectionnez la date à laquelle cet assemblée a été ajoutée à la plateforme. Elle ne doit pas nécessairement être identique à la date de création.
+            metadata: Métadonnées
+            no_taxonomy_filters_found: Aucun filtre de taxonomie trouvé.
+            other: Autre
+            private_notice: Vous serez en mesure de gérer les participants privés après l'avoir défini comme privé
+            select_a_created_by: Sélectionnez un créateur
+            select_parent_assembly: Sélectionnez l'assemblée parente
+            slug_help_html: 'Les identifiants d''URL sont utilisés pour générer les URL qui pointent vers cette assemblée. N''accepte que des lettres, des chiffres et des tirets et doit commencer par une lettre. Exemple : %{url}'
+            social_handlers: Réseaux sociaux
+            taxonomies: Taxonomies
+            title: Informations générales
+            visibility: Visibilité
+        assembly_duplicates:
+          form:
+            slug_help_html: 'Les identifiants d''URL sont utilisés pour générer les URL qui pointent vers cette assemblée. N''accepte que des lettres, des chiffres et des tirets et doit commencer par une lettre. Exemple: %{url}'
+        assembly_imports:
+          form:
+            slug_help_html: 'Les identifiants d''URL sont utilisés pour générer les URL qui pointent vers cette assemblée. N''accepte que des lettres, des chiffres et des tirets et doit commencer par une lettre. Exemple: %{url}'
+        assembly_members:
+          form:
+            explanation: 'Instruction concernant l’image :'
+            image_guide: De préférence une image au format portrait ne contenant pas de texte.
+            non_user_avatar_help: Vous devriez obtenir le consentement de l'utilisateur avant d'ajouter une image à son profil.
+        content_blocks:
+          highlighted_assemblies:
+            max_results: Quantité maximale d'éléments à afficher
+        new_import:
+          accepted_types:
+            json: JSON
+      assemblies:
+        description:
+          area_name: Périmètre d'assemblée
+          closing_date: Date de clôture
+          created_by: Créé par
+          creation_date: Date de création
+          data: Données de l'assemblée
+          developer_group: Organisateur
+          duration: Durée
+          included_at: Intégré à cette plateforme le
+          indefinite_duration: Indéfinie
+          local_area: Zone de l’organisation
+          meta_scope: Secteur
+          participatory_scope: Ce qui est décidé
+          participatory_structure: Modalités de décision
+          target: Qui participe
+          title: À propos de cette assemblée
+        filters:
+          names:
+            all: Tout
+          type: Type
+        show:
+          title: À propos de cette assemblée
+      assembly_members:
+        index:
+          members: Membres
+      content_blocks:
+        children_assemblies:
+          name: Assemblées
+        dates_metadata:
+          name: Métadonnées des dates
+        extra_data:
+          name: Type et durée
+        highlighted_assemblies:
+          name: Assemblées mises en avant
+        related_assemblies:
+          name: Assemblées liées
+      created_by:
+        city_council: Conseil municipal
+        others: Autres
+        public: Public
+      filter:
+        all: Tous les types
+        commission: Commission
+        consultative_advisory: Consultatif
+        executive: Exécutif
+        government: Gouvernement
+        help: 'Afficher:'
+        others: Autres
+        participatory: Participatif
+        working_group: Groupe de travail
+      index:
+        title: Assemblées
+      last_activity:
+        new_assembly: 'Nouvelle assemblée :'
+      pages:
+        home:
+          highlighted_assemblies:
+            active_spaces: Assemblées actives
+            see_all_spaces: Voir toutes les assemblées
+        user_profile:
+          member_of:
+            member_of: Membre de
+      show:
+        duration: Durée
+        private_space: Ceci est une assemblée privée
+        social_networks_title: Visiter l'assemblée sur
+    assembly_members:
+      index:
+        title: Membres
+    download_your_data:
+      show:
+        assemblies: Export des assemblées
+    events:
+      assemblies:
+        create_assembly_member:
+          email_intro: Un administrateur de l'assemblée <a href="%{resource_url}">%{resource_name}</a> vous y a ajouté en tant que membre.
+          email_outro: Vous avez reçu cette notification parce que vous avez été invité à rejoindre une assemblée. Consultez <a href="%{resource_url}">la page de l'assemblée</a> pour y contribuer !
+          email_subject: Vous avez été invité à être membre de l'assemblée %{resource_name}!
+          notification_title: Vous avez été inscrit en tant que membre de l'assemblée <a href="%{resource_path}">%{resource_name}</a>. Consultez la <a href="%{resource_path}">page de l'assemblée</a> pour contribuer !
+      assembly:
+        role_assigned:
+          email_intro: Un administrateur vous a assigné le rôle de %{role} de l'assemblée "%{resource_title}".
+          email_outro: Vous avez reçu cette notification parce que vous êtes %{role} de l'assemblée "%{resource_title}".
+          email_subject: Vous avez été assigné le rôle de %{role} pour l'assemblée "%{resource_title}".
+          notification_title: Vous avez été assigné le rôle de %{role} pour l'assemblée <a href="%{resource_url}">%{resource_title}</a>.
+    help:
+      participatory_spaces:
+        assemblies:
+          contextual: "<p>Une <strong>assemblée</strong> est un groupe de membres d'une organisation qui se réunissent périodiquement pour prendre des décisions concernant un domaine spécifique ou la portée de l'organisation.</p> <p>Les assemblées tiennent des réunions, certaines sont privées et d'autres sont ouvertes. Si elles sont ouvertes, il est possible d'y participer (par exemple: participer si la capacité le permet, ajouter des points à l'ordre du jour ou commenter les propositions et décisions prises par cet organe).</p> <p>Exemples: Une assemblée générale (qui se réunit une fois par an pour définir les principaux axes d'action de l'organisation ainsi que ses organes exécutifs par vote), un conseil consultatif sur l'égalité (qui se réunit tous les deux mois pour formuler des propositions sur la manière d'améliorer les relations entre les hommes et les femmes). dans l’organisation), une commission d’évaluation (qui se réunit tous les mois pour contrôler un processus) ou un organisme de garantie (qui collecte des incidents, des abus ou des propositions pour améliorer les processus décisionnels) sont tous des exemples de réunions.</p>\n"
+          page: "<p>Une assemblée est un groupe de membres d'une organisation qui se réunissent périodiquement pour prendre des décisions concernant un domaine spécifique ou la portée de l'organisation.</p> <p>assemblées tiennent des réunions, certaines sont privées et d'autres sont ouvertes. S'ils sont ouverts, il est possible d'y participer (par exemple: participer si la capacité le permet, ajouter des points à l'ordre du jour ou commenter les propositions et décisions prises par cet organe).</p> <p>Exemples: Une assemblée générale (qui se réunit une fois par an pour définir les principaux axes d'action de l'organisation ainsi que ses organes exécutifs par vote), un conseil consultatif sur l'égalité (qui se réunit tous les deux mois pour formuler des propositions sur la manière d'améliorer les relations entre les hommes et les femmes). dans l’organisation), une commission d’évaluation (qui se réunit tous les mois pour contrôler un processus) ou un organisme de garantie (qui collecte des incidents, des abus ou des propositions pour améliorer les processus décisionnels) sont tous des exemples de réunions.</p>\n"
+          title: Qu'est-ce qu'une assemblée ?
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'L''assemblée n''a pas été trouvée sur la base de données (ID: %{id})'
+        assembly_type_presenter:
+          not_found: 'Le type d''assemblée n''a pas été trouvé sur la base de données (ID: %{id})'
+    menu:
+      assemblies: Assemblées
+    open_data:
+      help:
+        assemblies:
+          announcement: Information sur l'annonce (callout)
+          assembly_type: Le type de l'assemblée
+          closing_date: La date de clôture de l'assemblée
+          closing_date_reason: Pourquoi l'assemblée a été clôturée
+          composition: La composition de l'assemblée
+          created_at: La date de création de cet espace
+          created_by: Qui a créé cette assemblée
+    participatory_processes:
+      show:
+        related_assemblies: Assemblées associées
+    statistics:
+      assemblies_count: Assemblées
+      assemblies_count_tooltip: Le nombre d'assemblées publiques où les décisions collectives sont prises.
+  layouts:
+    decidim:
+      assemblies:
+        assembly:
+          more_info: Plus d'informations
+          take_part: Participer
+        index:
+          promoted_assemblies: Assemblées mises en avant
+        metadata:
+          children_item:
+            one: "%{count} assemblée"
+            other: "%{count} assemblées"
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} assemblée"
+            other: "%{count} assemblées"
+      assembly_navigation:
+        assembly_member_menu_item: Membres

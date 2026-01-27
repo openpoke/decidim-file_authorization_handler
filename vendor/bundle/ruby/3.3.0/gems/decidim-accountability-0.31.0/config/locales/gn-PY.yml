@@ -1,0 +1,8 @@
+---
+gn:
+  activemodel:
+    attributes:
+      result:
+        decidim_accountability_status_id: Tetã
+        decidim_category_id: Hendápe
+        description: Techaukaha

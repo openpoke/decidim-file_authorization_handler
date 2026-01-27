@@ -1,0 +1,65 @@
+---
+hu:
+  activemodel:
+    attributes:
+      question:
+        max_choices: Maximális választási lehetőségek száma
+        question_type: Típus
+      questionnaire_question:
+        mandatory: Kötelező
+  decidim:
+    forms:
+      admin:
+        models:
+          components:
+            description: Leírás
+            tos: Szolgáltatás feltételei
+        questionnaires:
+          edit:
+            save: Mentés
+          form:
+            add_question: Kérdés hozzáadása
+            collapse: Minden kérdés összecsukása
+            expand: Minden kérdés kibontása
+          matrix_row:
+            remove: Eltávolít
+            statement: Nyilatkozat
+          question:
+            any: Bármilyen
+            collapse: Összecsukás
+            description: Leírás
+            expand: Kibontás
+            question: Kérdés
+            remove: Eltávolít
+            statement: Nyilatkozat
+          title_and_description:
+            collapse: Összecsuk
+            description: Leírás
+            expand: Kibont
+            remove: Eltávolít
+            title: Cím
+            title_and_description: Cím és leírás
+          update:
+            invalid: Hiba történt a kérdőív mentésekor.
+      images:
+        processors:
+          resize_to_fit: 'A kép át lesz méretezve erre a méretre: %{dimensions}.'
+      question_types:
+        multiple_option: Több választási lehetőség
+        single_option: Egy választási lehetőség
+        sorting: Válogatás
+        title_and_description: Cím és leírás
+      questionnaires:
+        question:
+          max_choices: 'Max választás: %{n}'
+        show:
+          questionnaire_closed:
+            title: A kérdőív lezárult
+          questionnaire_for_private_users:
+            body: A kérdőív csak magán felhasználók számára áll rendelkezésre
+            title: A kérdőív lezárult
+          tos_agreement: A részvétellel elfogadja az Általános Szerződési Feltételeket
+      step_navigation:
+        show:
+          continue: Folytatás
+          submit: Beküldés

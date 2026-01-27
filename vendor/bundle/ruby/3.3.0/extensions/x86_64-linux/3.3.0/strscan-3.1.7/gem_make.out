@@ -1,0 +1,21 @@
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/strscan-3.1.7/ext/strscan
+/home/elvia/.rbenv/versions/3.3.4/bin/ruby extconf.rb
+checking for onig_region_memsize(NULL)... yes
+checking for rb_reg_onig_match() in ruby/re.h... yes
+checking for rb_deprecate_constant()... yes
+creating Makefile
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/strscan-3.1.7/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-ojajjk sitelibdir\=./.gem.20260127-32267-ojajjk clean
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/strscan-3.1.7/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-ojajjk sitelibdir\=./.gem.20260127-32267-ojajjk
+compiling strscan.c
+linking shared-object strscan.so
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/strscan-3.1.7/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-ojajjk sitelibdir\=./.gem.20260127-32267-ojajjk install
+/usr/bin/install -c -m 0755 strscan.so ./.gem.20260127-32267-ojajjk
+
+current directory: /home/elvia/decidim-file_authorization_handler/vendor/bundle/ruby/3.3.0/gems/strscan-3.1.7/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20260127-32267-ojajjk sitelibdir\=./.gem.20260127-32267-ojajjk clean

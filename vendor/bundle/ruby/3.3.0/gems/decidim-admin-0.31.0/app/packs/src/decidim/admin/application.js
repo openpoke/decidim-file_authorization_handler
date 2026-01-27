@@ -1,0 +1,60 @@
+/* eslint-disable no-invalid-this */
+
+import Configuration from "src/decidim/refactor/implementation/configuration"
+
+
+import toggleNav from "src/decidim/admin/toggle_nav";
+import createSortList from "src/decidim/admin/sort_list.component";
+import managedUsersForm from "src/decidim/admin/managed_users";
+
+import "chartkick/chart.js";
+
+window.Decidim = window.Decidim || {};
+window.Decidim.managedUsersForm = managedUsersForm;
+window.Decidim.config = new Configuration();
+
+
+const context = require.context("./controllers", true, /controller\.js$/)
+window.Stimulus.load(window.definitionsFromContext(context))
+
+
+// REDESIGN_PENDING: deprecated
+window.initFoundation = (element) => {
+  $(element).foundation();
+};
+
+document.addEventListener("turbo:load", () => {
+  window.initFoundation(document);
+
+  $(document).on("show.zf.dropdownMenu", function(event, $element) {
+    $element.attr("aria-hidden", "false");
+  });
+
+  $(document).on("hide.zf.dropdownMenu", function(event, $element) {
+    $element.children(".is-dropdown-submenu").attr("aria-hidden", "true");
+  });
+
+  toggleNav();
+
+  createSortList("#steps tbody", {
+    placeholder: $(
+      '<tr style="border-style: dashed; border-color: #000"><td colspan="4">&nbsp;</td></tr>'
+    )[0],
+    onSortUpdate: ($children) => {
+      const sortUrl = $("#steps tbody").data("sort-url");
+      const order = $children.
+        map((index, child) => $(child).data("id")).
+        toArray();
+
+      $.ajax({
+        method: "POST",
+        url: sortUrl,
+        contentType: "application/json",
+        data: JSON.stringify({ items_ids: order }) // eslint-disable-line camelcase
+      });
+    }
+  });
+
+  document.querySelectorAll("form.new_filter").forEach((container) =>
+    window.deprecate(container, "form-filter", "form.new_filter"))
+});

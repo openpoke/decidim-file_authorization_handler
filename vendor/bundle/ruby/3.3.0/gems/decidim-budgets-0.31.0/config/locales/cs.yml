@@ -1,0 +1,464 @@
+---
+cs:
+  activemodel:
+    attributes:
+      budget:
+        description: Popis
+        title: Název
+        total_budget: Celkový rozpočet
+        weight: Pozice v řazení
+      project:
+        budget_amount: Částka rozpočtu
+        description: Popis
+        proposal_ids: Související návrhy
+        proposals: Návrhy
+        selected: Vybráno pro implementaci
+        title: Titul
+      proposals_import:
+        scope_id: Oblast působnosti
+  activerecord:
+    models:
+      decidim:
+        budgets:
+          project:
+            text: 'Byl přidán do tohoto rozpočtu: %{link}'
+      decidim/budgets/budget:
+        one: Rozpočet
+        few: Rozpočty
+        many: Rozpočtů
+        other: Rozpočtů
+      decidim/budgets/project:
+        one: Projekt
+        few: Projekty
+        many: Projekty
+        other: Projekty
+  decidim:
+    admin:
+      admin_log:
+        changeset:
+          projects: Projekty
+      filters:
+        projects:
+          selected_at_null:
+            label: Vybráno
+            values:
+              'false': Vybráno pro implementaci
+              'true': Nevybráno pro implementaci
+          taxonomies_part_of_contains:
+            label: Taxonomie
+      tooltips:
+        deleted_projects_info: Tento projekt nelze odstranit
+    budgets:
+      actions:
+        confirm_delete_budget: Opravdu chcete odstranit tento rozpočet?
+        confirm_delete_project: Opravdu chcete odstranit tento projekt?
+        deleted_budgets_info: Smazané rozpočty mohou být obnoveny z koše.
+        edit: Upravit
+        edit_projects: Přidat projekty
+        import: Importovat návrhy do projektů
+        new_budget: Nový rozpočet
+        new_project: Nový projekt
+        preview: Náhled
+        send_voting_reminders: Odeslat připomenutí hlasování
+        title: Akce
+        view_deleted_budgets: Zobrazit odstraněné rozpočty
+        view_deleted_projects: Zobrazit odstraněné projekty
+      admin:
+        budgets:
+          create:
+            invalid: Při vytváření tohoto rozpočtu došlo k chybě.
+            success: Rozpočet byl úspěšně vytvořen.
+          edit:
+            title: Upravit rozpočet
+            update: Aktualizovat rozpočet
+          index:
+            finished_orders: Dokončené hlasy
+            pending_orders: Čekající hlasy
+            title: Rozpočty
+            users_with_finished_orders: Uživatelé s dokončenými hlasy
+            users_with_pending_orders: Uživatelé s čekajícími hlasy
+          manage_trash:
+            title: Smazané rozpočty
+          new:
+            create: Vytvořit rozpočet
+            title: Nový rozpočet
+          update:
+            invalid: Při aktualizaci tohoto rozpočtu došlo k chybě.
+            success: Rozpočet byl úspěšně aktualizován.
+        exports:
+          projects: Projekty
+        models:
+          project:
+            name: Projekt
+        projects:
+          create:
+            invalid: Při vytváření tohoto projektu došlo k chybě.
+            success: Projekt byl úspěšně vytvořen.
+          edit:
+            title: Upravit projekt
+            update: Aktualizace
+          index:
+            actions: Akce
+            cancel: Zrušit
+            change_budget: Změnit rozpočet
+            change_selected: Změnit vybraný stav
+            change_taxonomies: Změnit taxonomie
+            deselect_implementation: Zrušit výběr z implementace
+            finished_orders: Dokončené hlasy
+            pending_orders: Čeká na hlasování
+            select_for_implementation: Vybrat pro implementaci
+            selected: Vybrané
+            selected_options:
+              'no': 'Ne'
+              'yes': 'Ano'
+            title: Projekty
+            update: Aktualizovat
+            update_budget_button: Aktualizovat rozpočet projektu
+          manage_trash:
+            title: Smazané projekty
+          new:
+            create: Vytvořit
+            title: Nový projekt
+          update:
+            invalid: Při aktualizaci tohoto projektu došlo k chybě.
+            success: Projekt byl úspěšně aktualizován.
+          update_budget:
+            invalid: 'Tyto projekty jsou již ve stejném rozpočtu nebo jejich rozpočty jsou vyšší než povolené maximum: %{errored}.'
+            select_a_project: Vyberte projekt.
+            success: 'Projekty byly úspěšně aktualizovány do rozpočtu %{subject_name}: %{successful}.'
+          update_selected:
+            invalid:
+              selected: 'Tyto projekty již byly vybrány pro realizaci: %{errored}.'
+              unselected: 'Tyto projekty již byly odebrány z implementace: %{errored}.'
+            select_a_project: Vyberte projekt.
+            select_a_selection: Vyberte prosím stav implementace.
+            success:
+              selected: 'Tyto projekty byly úspěšně vybrány pro realizaci: %{successful}.'
+              unselected: 'Tyto projekty byly úspěšně odebrány z implementace: %{successful}.'
+          update_taxonomies:
+            invalid: 'Taxonomie %{taxonomies}, kde již byly tyto projekty přiřazeny: %{errored}.'
+            select_a_project: Vyberte prosím projekt.
+            select_a_taxonomy: Vyberte taxonomii.
+            success: 'Projekty byly úspěšně aktualizovány na taxonomie %{taxonomies}: %{successful}.'
+        proposals_imports:
+          create:
+            invalid: Při importu návrhů do projektů došlo k chybě.
+            success: "%{number} návrhů bylo úspěšně importováno do projektů."
+          new:
+            create: Návrhy na projekty
+            default_budget: Výchozí rozpočet
+            import_all_accepted_proposals: Importovat všechny přijaté návrhy
+            no_components: V tomto participativním prostoru neexistují jiné komponenty návrhu, které by mohly importovat návrhy do projektů.
+            origin_component_id: Původ komponenty
+            select_component: Vyberte součást
+            title: Importovat návrhy do projektů
+        reminders:
+          orders:
+            description: Uživatelé obdrží e-mail s odkazy na rozpočty, kde se čeká na vyjádření.
+            title:
+              one: Chystáte se odeslat připomenutí e-mailu %{count} uživateli
+              few: Chystáte se odeslat připomenutí e-mailu %{count} uživatelům
+              many: Chystáte se odeslat připomenutí e-mailu %{count} uživatelům
+              other: Chystáte se odeslat připomenutí e-mailu %{count} uživatelům
+      admin_log:
+        budget:
+          create: "%{user_name} vytvořil %{resource_name} rozpočet ve skupině %{space_name}"
+          delete: "%{user_name} odstranil %{resource_name} rozpočet ve skupině %{space_name}"
+          restore: "%{user_name} obnovil rozpočet %{resource_name} v %{space_name}"
+          soft_delete: "%{user_name} přesunul rozpočet %{resource_name} v %{space_name} do koše"
+          update: "%{user_name} aktualizoval rozpočet %{resource_name} ve skupině %{space_name}"
+        project:
+          create: "%{user_name} vytvořil %{resource_name} projekt ve %{space_name} prostoru"
+          delete: "%{user_name} odstranil %{resource_name} projekt v prostoru %{space_name}"
+          restore: "%{user_name} obnovil projekt %{resource_name} v %{space_name}"
+          soft_delete: "%{user_name} přesunul projekt %{resource_name} v %{space_name} do koše"
+          update: "%{user_name} aktualizoval %{resource_name} projekt v prostoru %{space_name}"
+      budget_information_modal:
+        back_to: Zpět na %{component_name}
+        close_modal: Zavřít okno
+        continue: Pokračovat
+        more_information: Více informací o rozpočtu
+      budgets_list:
+        budgets: Rozpočty
+        cancel_order:
+          more_than_one: smažte svůj hlas na %{name} a začněte znovu
+          only_one: smazat váš hlas a začít znovu.
+        completed: Dokončeno
+        count:
+          one: "%{count} rozpočet"
+          few: "%{count} rozpočty"
+          many: "%{count} rozpočtů"
+          other: "%{count} rozpočtů"
+        empty: Zatím neexistují žádné rozpočty
+        finished_message: Dokončili jste hlasovací proces. Děkujeme za účast!
+        highlighted_cta: Hlasovat na %{name}
+        if_change_opinion: Pokud jste změnili názor, můžete
+        incomplete: Nedokončené
+        orders:
+          highest_cost: Nejvyšší náklady
+          label: Seřadit rozpočty podle
+          lowest_cost: Nejnižší náklady
+          random: Náhodné pořadí
+        progress: Dokončit hlasování
+        remove_vote: Odebrat hlas
+        see_projects: Zobrazit projekty
+        see_results: Zobrazit výsledky
+        show: Zobrazit projekty
+        vote: Hlasovat
+        voted_budgets: Hlasované rozpočty
+        voted_on: Hlasovali jste na %{links}.
+      creation:
+        text: Byli přidáni do tohoto rozpočtu
+      last_activity:
+        new_vote_at: Nový rozpočtový hlas v
+      limit_announcement:
+        cant_vote: O tomto rozpočtu nelze hlasovat. <a href="%{landing_path}">Zkuste jiný rozpočet</a>.
+        limit_reached: Máte aktivní hlasy v %{links}. Chcete-li hlasovat o tomto rozpočtu, musíte <a href="%{landing_path}">smazat svůj hlas a začít znovu</a>.
+      models:
+        budget:
+          fields:
+            name: Název
+            projects_count: Počet projektů
+            total_budget: Celkový rozpočet
+        project:
+          fields:
+            id: ID
+            map: Mapa
+            taxonomies: Taxonomie
+            title: Titul
+      order:
+        status:
+          continue_voting: Pokračovat v hlasování
+          download_vote: Stáhněte si svůj hlas
+          pending_to_vote_budgets:
+            one: Můžete hlasovat v jiném rozpočtu
+            few: Můžete hlasovat v jiných rozpočtech
+            many: Můžete hlasovat v jiných rozpočtech
+            other: Můžete hlasovat v jiných rozpočtech
+          share_text: "Právě jsem hlasoval pro své oblíbené projekty v %{space_name}! 🎉 Hlasujte teď: %{component_url}"
+          share_vote: Sdílejte svůj hlas
+          title: Váš hlas byl úspěšně přijat
+          view_votes:
+            one: Zobrazit hlas
+            few: Zobrazit hlasy
+            many: Zobrazit hlasů
+            other: Zobrazit hlasů
+          votes_count:
+            one: Váš hlas pro %{budget_name} již byl zaregistrován.
+            few: Vaše %{count} hlasy pro %{budget_name} již byly zaregistrovány.
+            many: Vašich %{count} hlasů pro %{budget_name} již bylo zaregistrováno.
+            other: Vašich %{count} hlasů pro %{budget_name} již bylo zaregistrováno.
+      order_pdf:
+        text: Hlasovali jste v %{space_name}, pro následující projekty
+        title: Váš hlas byl úspěšně přijat.
+      order_summary_mailer:
+        order_summary:
+          selected_projects: 'Vybrané projekty jsou:'
+          subject: Hlasovali jste o účastnickém prostoru %{space_name}
+          voted_on_space: Hlasovali jste o rozpočtu %{budget_name} pro skupinu %{space_name}.
+      projects:
+        back_to_budgets: Zpět do rozpočtů
+        budget_confirm:
+          are_you_sure: Pokud změníte názor, můžete svůj hlas později změnit.
+          cancel: Zrušit
+          confirm: Potvrdit
+          description: Jedná se o projekty, které jste zvolili jako součást rozpočtu.
+          title: Potvrďte hlasování
+        budget_excess:
+          budget_excess:
+            description: Tento projekt překračuje maximální rozpočet a nemůže být přidán. Pokud chcete, můžete smazat již vybraný projekt, abyste mohli hlasovat znovu podle vašich preferencí.
+            title: Maximální rozpočet byl překročen
+          description: Tento projekt překračuje maximální rozpočet a nemůže být přidán. Pokud chcete, můžete smazat již vybraný projekt, abyste mohli hlasovat znovu podle vašich preferencí.
+          ok: OK
+          projects_excess:
+            description: Tento projekt překračuje maximální počet projektů a nemůže být přidán. Pokud chcete, můžete smazat již vybraný projekt, abyste mohli hlasovat znovu podle vašich preferencí.
+            title: Byl překročen maximální počet projektů
+        budget_summary:
+          are_you_sure: Opravdu chcete zrušit hlasování?
+          cancel_order: Smazat váš hlas
+          checked_out:
+            description: Už jste pro rozpočet hlasovali. Pokud jste změnili názor, můžete %{cancel_link}.
+            title: Hlasování o rozpočtu bylo dokončeno
+          vote: Hlasovat o rozpočtu
+        count:
+          projects_count:
+            one: 1 projekt
+            few: "%{count} projektů"
+            many: "%{count} projektů"
+            other: "%{count} projektů"
+        empty: Zatím neexistují žádné projekty
+        exit_modal:
+          cancel: Návrat k hlasování
+          exit: Ukončit hlasování
+          message: Váš hlas nebyl zaregistrován, protože jste ještě nedokončili proces hlasování. Opravdu chcete ukončit hlasování?
+          title: Zatím jste nehlasovali
+        filters:
+          search: Vyhledávání
+          status: Stav
+          status_values:
+            all: Vše
+            not_selected: Nevybráno
+            selected: Vybrané
+        order_progress:
+          assigned: Přiřazeno
+          budget: Rozpočet
+          dynamic_help:
+            minimum_reached: Dosáhli jste minima, abyste mohli hlasovat
+          minimum: Minimum
+        orders:
+          highest_cost: Nejvyšší náklady
+          label: Seřadit projekty podle
+          lowest_cost: Nejnižší náklady
+          most_voted: Nejvíce hlasovalo
+          random: Náhodné pořadí
+          selected: Vybrané
+        project:
+          add: Přidat k hlasování projekt %{resource_name}.
+          remove: Odebrat projekt %{resource_name} z vašeho hlasování.
+          selected: Vybrané
+          votes:
+            one: hlas
+            few: hlasy
+            many: hlasů
+            other: hlasů
+          you_voted: Hlasoval jste pro toto
+        project_budget_button:
+          add: Přidat do vašeho hlasování
+          add_descriptive: Přidat k hlasování projekt %{resource_name}.
+          added: Přidáno k vašemu hlasování
+          added_descriptive: Projekt %{resource_name} přidán k vašemu hlasování.
+        project_filter:
+          added: Přidáno
+          all: Vše
+        projects_for: Projekty pro %{name}
+        select_projects: Přidat projekty
+        show:
+          budget: Rozpočet
+          votes: Hlasy
+      prompt: Vybrat rozpočet
+      vote_reminder_mailer:
+        vote_reminder:
+          email_budgets: 'Oblasti, kde máte nedokončené hlasování:'
+          email_intro: Zahájili jste hlasování o participačním rozpočtu, ale nedokončili jste ho.
+          email_link: Pokračovat v hlasování
+          email_outro: Nezapomeňte prosím dokončit hlasování. Chcete-li hlasovat, musíte nejprve vybrat návrh nebo návrhy, o kterých chcete hlasovat, a potvrdit svůj hlas pomocí tlačítka "Hlasování".
+          email_subject:
+            one: Máte nedokončené hlasování v participativním rozpočtovém hlasování
+            few: Máte nedokončené hlasování v participativním rozpočtovém hlasování
+            many: Máte nedokončená hlasování v participativním rozpočtovém hlasování
+            other: Máte nedokončené hlasování v participativním rozpočtovém hlasování
+    components:
+      budgets:
+        actions:
+          comment: Komentář
+          vote: Hlasovat
+        name: Rozpočty
+        settings:
+          global:
+            announcement: Oznámení
+            clear_all: Vymazat vše
+            comments_enabled: Komentáře povoleny
+            comments_max_length: Maximální délka komentáře (ponechte 0 pro výchozí hodnotu)
+            define_taxonomy_filters: Před použitím tohoto nastavení prosím definujte některé filtry pro tento participační prostor.
+            form:
+              errors:
+                budget_voting_rule_only_one: Pouze jedno hlasovací pravidlo musí být povoleno.
+                budget_voting_rule_required: Je vyžadováno jedno pravidlo hlasování.
+            geocoding_enabled: Mapy povoleny
+            landing_page_content: Úvodní stránka rozpočtů
+            more_information_modal: Více informací
+            no_taxonomy_filters_found: Nebyly nalezeny žádné filtry taxonomie.
+            projects_per_page: Počet projektů na stránku
+            resources_permissions_enabled: Oprávnění k akcím lze nastavit pro každý projekt
+            taxonomy_filters: Vyberte filtry pro komponentu
+            taxonomy_filters_add: Přidat filtr
+            title: Název
+            total_budget: Celkový rozpočet
+            vote_minimum_budget_projects_number: Minimální počet projektů k hlasování
+            vote_rule_minimum_budget_projects_enabled: 'Povolit pravidlo: Minimální počet projektů, o kterých se má hlasovat'
+            vote_rule_selected_projects_enabled: 'Povolit pravidlo: Minimální a maximální počet projektů, o kterých se má hlasovat'
+            vote_rule_threshold_percent_enabled: 'Povolit pravidlo: minimální procento rozpočtu'
+            vote_selected_projects_maximum: Maximální počet projektů, které mají být vybrány
+            vote_selected_projects_minimum: Minimální počet projektů, které mají být vybrány
+            vote_threshold_percent: Prahová hodnota pro hlasování v procentech
+            voting_rule: Pravidla hlasování
+            voting_rule_choices:
+              minimum_projects: Minimální počet projektů, o nichž se má hlasovat
+              selected_projects: Minimální a maximální počet projektů, o nichž se má hlasovat
+              threshold_percent: Minimální procento rozpočtu
+            workflow: Pracovní postup
+            workflow_choices:
+              all: 'Hlasovat všude: umožňuje účastníkům hlasovat ve všech rozpočtech.'
+              one: 'Hlasovat jednou: umožňuje účastníkům hlasovat v jakémkoliv rozpočtu, ale pouze v jednom.'
+          step:
+            announcement: Oznámení
+            comments_blocked: Komentáře byly blokovány
+            highlighted_heading: Zvýrazněný nadpis
+            landing_page_content: Úvodní stránka rozpočtů
+            list_heading: Nadpis seznamu
+            more_information_modal: Více informací
+            show_votes: Zobrazit hlasy
+            title: Název
+            votes: Hlasování
+            votes_choices:
+              disabled: Hlasování zakázáno
+              enabled: Hlasování povoleno
+              finished: Hlasování dokončeno
+    download_your_data:
+      help:
+        orders:
+          budget: Rozpočet související s pokynem
+          checked_out_at: Datum a čas, kdy byl pokyn zkontrolován
+          component: Komponenta, ke které se pokyn vztahuje
+          created_at: Datum a čas, kdy byl pokyn vytvořen
+          id: Jedinečný identifikátor pokynu
+          projects: Projekty, v kterých pokyn hlasovaný
+          updated_at: Datum a čas, kdy byl pokyn aktualizován
+      show:
+        projects: Export projektů
+    events:
+      budgets:
+        budget_published:
+          email_intro: 'Rozpočet %{resource_title} je nyní aktivní pro %{participatory_space_title}. Můžete jej vidět z této stránky:'
+          email_outro: Obdrželi jste toto oznámení, protože sledujete %{participatory_space_title}. Můžete přestat přijímat oznámení na předchozím odkazu.
+          email_subject: Rozpočet %{resource_title} je nyní aktivní pro %{participatory_space_title}.
+          notification_title: Rozpočet <a href="%{resource_path}">%{resource_title}</a> je nyní aktivní pro %{participatory_space_title}.
+    open_data:
+      help:
+        projects:
+          address: Adresa projektu (pokud existuje)
+          budget: Údaje týkající se rozpočtu projektu (např. „2021 rozpočet“)
+          budget_amount: Celková částka rozpočtu pro tento projekt
+          comments: Počet komentářů, které tento projekt obdržel
+          component: Složka, do které projekt patří,
+          confirmed_votes: Počet potvrzených hlasů tohoto projektu
+          created_at: Datum a čas, kdy byl projekt vytvořen
+          description: Popis projektu
+          follows_count: Počet sledujících tohoto projektu
+          id: Jedinečný identifikátor projektu
+          latitude: Zeměpisná šířka projektu v případě, že má fyzickou polohu
+          longitude: Zeměpisná délka projektu v případě, že má fyzickou polohu
+          participatory_space: Do kterého prostoru (např. účastnický proces nebo Shromáždění) patří tento projekt
+          reference: Jedinečný odkaz na projekt
+          related_proposal_titles: Názvy souvisejících návrhů
+          related_proposal_urls: URL adresy souvisejících návrhů
+          related_proposals: Související návrhy k tomuto projektu
+          selected_at: Doba, kdy byl projekt vybrán
+          taxonomies: Taxonomie projektu
+          title: Název projektu
+          updated_at: Poslední datum, kdy byl projekt aktualizován
+          url: URL adresa projektu
+    orders:
+      checkout:
+        error: Při zpracování vašeho hlasování nastal problém.
+      destroy:
+        error: Při rušení vašeho hlasování došlo k chybě.
+        success: Váš hlas byl úspěšně zrušen.
+    resource_links:
+      included_proposals:
+        project_proposal: Návrhy zahrnuté do tohoto projektu
+    statistics:
+      orders_count: Podpory
+      projects_count: Rozpočty
+  index:
+    confirmed_orders_count: Počet hlasů
