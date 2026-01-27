@@ -17,6 +17,7 @@ group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim", "0.31", require: true
   gem "decidim-dev", "~> 0.31", require: true
+  gem "decidim-initiatives", "~> 0.31", require: true
   gem "faker", "~> 3.2"
   gem "letter_opener_web"
   gem "listen"
