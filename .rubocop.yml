@@ -5,9 +5,5 @@ AllCops:
   Exclude:
     - 'db/**/*.rb'
     - 'vendor/**/*'
-    - 'spec/decidim_dummy_app/db/**.rb'
-    - 'spec/decidim_dummy_app/db/**/**.rb'
-    - 'spec/decidim_dummy_app/config/**/**.rb'
-    - 'development_app/db/**/*.rb'
-    - 'development_app/Gemfile'
-    - 'development_app/config/**/*.rb'
+    - 'spec/decidim_dummy_app/**/*'
+    - 'development_app/**/*'
