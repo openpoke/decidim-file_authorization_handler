@@ -1,4 +1,0 @@
-# Disabled graphql configurations
-
-GraphQL/ExtractType:
-  Enabled: false

@@ -1,5 +1,0 @@
-<%= cell("decidim/announcement", t("decidim.initiatives.initiative_signatures.sms_phone_number.confirmed_data"), callout_class: "secondary") %>
-
-<%= decidim_form_for(@form, url: sms_phone_number_initiative_signatures_path, method: :put) do |f| %>
-  <%= render partial: "sms_phone_number_form", object: f %>
-<% end %>
