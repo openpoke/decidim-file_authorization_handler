@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    decidim-file_authorization_handler (0.32.0.1)
-      decidim (~> 0.32.0)
-      decidim-admin (~> 0.32.0)
+    decidim-file_authorization_handler (0.32.0)
+      decidim (~> 0.32)
+      decidim-admin (~> 0.32)
 
 GEM
   remote: https://rubygems.org/
@@ -363,7 +363,7 @@ GEM
     devise-jwt (0.13.0)
       devise (>= 4.0.0, < 6.0.0)
       warden-jwt_auth (~> 0.10)
-    devise_invitable (2.0.13)
+    devise_invitable (2.0.14)
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.6.2)
@@ -707,8 +707,8 @@ GEM
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
-    rack-proxy (2.0.1)
-      rack (>= 2.0, < 4)
+    rack-proxy (0.8.3)
+      rack
     rack-session (2.1.2)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
