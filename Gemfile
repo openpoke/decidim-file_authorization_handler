@@ -23,4 +23,7 @@ group :development, :test do
   gem "letter_opener_web"
   gem "listen"
   gem "rubocop-faker", "~> 1.1"
+  gem "selma", "0.5.2"
+  gem "sidekiq"
+  gem "rack-mini-profiler", require: false
 end
