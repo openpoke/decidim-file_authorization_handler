@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.31.6.3
+- Add a configurable Ephemeral_file_authorization_handler.
+
+## v0.31.6.2
+- Automate engine mount and adds basque language (#36)
+- Introduce i18n-tasks GitHub Action
+
 ## v0.31.6.1
 - Fix issue with admin_engine workflow
 
